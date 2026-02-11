@@ -109,25 +109,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/accounts"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -266,6 +260,17 @@
         "tags": [
           "Accounts"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -331,33 +336,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -425,6 +407,17 @@
         },
         "tags": [
           "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -502,6 +495,17 @@
         "tags": [
           "Accounts"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -577,6 +581,17 @@
         },
         "tags": [
           "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -654,6 +669,17 @@
         "tags": [
           "Accounts"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -730,6 +756,17 @@
         "tags": [
           "Accounts"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -750,8 +787,8 @@
     },
     "/v1/api-keys/": {
       "post": {
-        "summary": "Post create",
-        "description": "Operation provided by APIKeysAPI",
+        "summary": "Create a new API key for the authenticated organization.",
+        "description": "Create a new API key for the authenticated organization.",
         "operationId": "api-keys_create_post",
         "responses": {
           "200": {
@@ -824,8 +861,8 @@
         ]
       },
       "get": {
-        "summary": "Get list",
-        "description": "Operation provided by APIKeysAPI",
+        "summary": "List API keys for the authenticated organization.",
+        "description": "List API keys for the authenticated organization.",
         "operationId": "api-keys_list_get",
         "responses": {
           "200": {
@@ -845,25 +882,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/api-keys"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -946,8 +977,8 @@
     },
     "/v1/api-keys/{id}": {
       "delete": {
-        "summary": "Delete destroy",
-        "description": "Operation provided by APIKeysAPI",
+        "summary": "Delete an API key.",
+        "description": "Delete an API key.",
         "operationId": "api-keys_destroy_delete",
         "responses": {
           "200": {
@@ -1002,6 +1033,17 @@
         "tags": [
           "Api-Keys"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1009,8 +1051,8 @@
         ]
       },
       "patch": {
-        "summary": "Patch patch",
-        "description": "Operation provided by APIKeysAPI",
+        "summary": "Update mutable API key fields.",
+        "description": "Update mutable API key fields.",
         "operationId": "api-keys_patch_patch",
         "responses": {
           "200": {
@@ -1065,6 +1107,17 @@
         "tags": [
           "Api-Keys"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1083,8 +1136,8 @@
         ]
       },
       "get": {
-        "summary": "Get retrieve",
-        "description": "Operation provided by APIKeysAPI",
+        "summary": "Retrieve a single API key by ID.",
+        "description": "Retrieve a single API key by ID.",
         "operationId": "api-keys_retrieve_get",
         "responses": {
           "200": {
@@ -1141,33 +1194,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1182,8 +1212,8 @@
     },
     "/v1/api-keys/{id}/rotate": {
       "post": {
-        "summary": "Post rotate",
-        "description": "Operation provided by APIKeysAPI",
+        "summary": "Rotate an API key and return a fresh secret.",
+        "description": "Rotate an API key and return a fresh secret.",
         "operationId": "api-keys_rotate_post",
         "responses": {
           "200": {
@@ -1237,6 +1267,17 @@
         },
         "tags": [
           "Api-Keys"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -1408,803 +1449,10 @@
         ]
       }
     },
-    "/v1/auth/device": {
-      "post": {
-        "summary": "Device authorization endpoint for CLI/device authentication.",
-        "description": "Device authorization endpoint for CLI/device authentication.",
-        "operationId": "auth_device_authorization_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/login": {
-      "post": {
-        "summary": "Login endpoint for the authentication API.",
-        "description": "Login endpoint for the authentication API.",
-        "operationId": "auth_login_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/logout": {
-      "post": {
-        "summary": "Logout and clear session.",
-        "description": "Logout and clear session.",
-        "operationId": "auth_logout_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/password-reset": {
-      "post": {
-        "summary": "Password reset endpoint for the authentication API.",
-        "description": "Password reset endpoint for the authentication API.",
-        "operationId": "auth_password_reset_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/signup": {
-      "post": {
-        "summary": "Signup endpoint for the authentication API.",
-        "description": "Signup endpoint for the authentication API.",
-        "operationId": "auth_signup_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/token": {
-      "post": {
-        "summary": "Token exchange endpoint supporting device_code grant type.",
-        "description": "Token exchange endpoint supporting device_code grant type.",
-        "operationId": "auth_token_exchange_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/device/confirm": {
-      "post": {
-        "summary": "Confirm device authorization - requires authenticated user.",
-        "description": "Confirm device authorization - requires authenticated user.",
-        "operationId": "auth_device_confirm_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/oauth/access-token": {
-      "post": {
-        "summary": "Authorization access token endpoint for the authentication API.",
-        "description": "Authorization access token endpoint for the authentication API.",
-        "operationId": "auth_oauth_access_token_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/oauth/authorization": {
-      "post": {
-        "summary": "Authorization endpoint for the authentication API.",
-        "description": "Authorization endpoint for the authentication API.",
-        "operationId": "auth_oauth_authorization_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/token/refresh": {
-      "post": {
-        "summary": "Token refresh endpoint for the authentication API.",
-        "description": "Token refresh endpoint for the authentication API.",
-        "operationId": "auth_token_refresh_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/intents/{id}/confirm": {
-      "post": {
-        "summary": "Confirm endpoint for the authentication API.",
-        "description": "Confirm endpoint for the authentication API.",
-        "operationId": "auth_confirm_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/password-reset/{id}/confirm": {
-      "post": {
-        "summary": "Password reset confirm endpoint for the authentication API.",
-        "description": "Password reset confirm endpoint for the authentication API.",
-        "operationId": "auth_password_reset_confirm_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/auth/intents/{id}/refresh": {
-      "post": {
-        "summary": "Signup refresh endpoint for the authentication API.",
-        "description": "Signup refresh endpoint for the authentication API.",
-        "operationId": "auth_refresh_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/chat/completions": {
       "post": {
-        "summary": "Create a chat completion (streaming or non-streaming).",
-        "description": "Create a chat completion (streaming or non-streaming).",
+        "summary": "Create chat completion",
+        "description": "Creates a chat completion using a supported provider model.",
         "operationId": "chat_create_completion_post",
         "responses": {
           "200": {
@@ -2218,9 +1466,32 @@
                       "type": "string"
                     },
                     "object": {
+                      "type": "string",
+                      "example": "chat.completion"
+                    },
+                    "created": {
+                      "type": "integer"
+                    },
+                    "model": {
                       "type": "string"
+                    },
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "additionalProperties": true
                     }
-                  }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "model",
+                    "choices"
+                  ]
                 }
               }
             }
@@ -2265,7 +1536,47 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "additionalProperties": true
+                "properties": {
+                  "model": {
+                    "type": "string"
+                  },
+                  "messages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string",
+                          "enum": [
+                            "system",
+                            "user",
+                            "assistant",
+                            "tool"
+                          ]
+                        },
+                        "content": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "role",
+                        "content"
+                      ]
+                    }
+                  },
+                  "stream": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "meta": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "model",
+                  "messages"
+                ]
               }
             }
           }
@@ -2351,13 +1662,30 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "type": "string"
-                    },
                     "object": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/compute"
                     }
-                  }
+                  },
+                  "required": [
+                    "object",
+                    "data",
+                    "has_more",
+                    "url"
+                  ]
                 }
               }
             }
@@ -2497,33 +1825,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -2614,8 +1919,8 @@
     },
     "/v1/engrams/": {
       "post": {
-        "summary": "Post create",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "Create a new engram.",
+        "description": "Create a new engram.",
         "operationId": "engrams_create_post",
         "responses": {
           "200": {
@@ -2688,8 +1993,8 @@
         ]
       },
       "get": {
-        "summary": "Get list",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "List engrams for the authenticated organization.",
+        "description": "List engrams for the authenticated organization.",
         "operationId": "engrams_list_get",
         "responses": {
           "200": {
@@ -2709,25 +2014,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/engrams"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -2886,8 +2185,8 @@
     },
     "/v1/engrams/{id}": {
       "delete": {
-        "summary": "Delete delete",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "Delete an engram.",
+        "description": "Delete an engram.",
         "operationId": "engrams_delete_delete",
         "responses": {
           "200": {
@@ -2942,6 +2241,17 @@
         "tags": [
           "Engrams"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -2949,8 +2259,8 @@
         ]
       },
       "patch": {
-        "summary": "Patch patch",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "Update mutable engram fields.",
+        "description": "Update mutable engram fields.",
         "operationId": "engrams_patch_patch",
         "responses": {
           "200": {
@@ -3005,6 +2315,17 @@
         "tags": [
           "Engrams"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -3023,8 +2344,8 @@
         ]
       },
       "get": {
-        "summary": "Get retrieve",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "Retrieve a single engram by ID.",
+        "description": "Retrieve a single engram by ID.",
         "operationId": "engrams_retrieve_get",
         "responses": {
           "200": {
@@ -3081,33 +2402,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -3122,8 +2420,8 @@
     },
     "/v1/engrams/{id}/archive": {
       "post": {
-        "summary": "Post archive",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "Archive an engram.",
+        "description": "Archive an engram.",
         "operationId": "engrams_archive_post",
         "responses": {
           "200": {
@@ -3178,6 +2476,17 @@
         "tags": [
           "Engrams"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -3198,8 +2507,8 @@
     },
     "/v1/engrams/{id}/restore": {
       "post": {
-        "summary": "Post restore",
-        "description": "Operation provided by EngramsAPI",
+        "summary": "Restore an archived engram.",
+        "description": "Restore an archived engram.",
         "operationId": "engrams_restore_post",
         "responses": {
           "200": {
@@ -3254,81 +2563,16 @@
         "tags": [
           "Engrams"
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        },
-        "security": [
+        "parameters": [
           {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/v1/environments/": {
-      "post": {
-        "summary": "Create (or return) an environment by slug.",
-        "description": "Create (or return) an environment by slug.",
-        "operationId": "environments_create_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authentication required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        },
-        "tags": [
-          "Environments"
         ],
         "requestBody": {
           "required": true,
@@ -3341,225 +2585,6 @@
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "get": {
-        "summary": "List environments for the authenticated user's organization.",
-        "description": "List environments for the authenticated user's organization.",
-        "operationId": "environments_list_get",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "object": {
-                      "type": "string",
-                      "example": "list"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object"
-                      }
-                    },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
-                    "has_more": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "object",
-                    "data"
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authentication required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Environments"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/v1/environments/{id}": {
-      "get": {
-        "summary": "Retrieve a single environment by id.",
-        "description": "Retrieve a single environment by id.",
-        "operationId": "environments_retrieve_get",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authentication required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Environments"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "security": [
           {
             "bearerAuth": []
@@ -3569,8 +2594,8 @@
     },
     "/v1/health/": {
       "get": {
-        "summary": "Get health_check",
-        "description": "Operation provided by HealthAPI",
+        "summary": "Return service health status.",
+        "description": "Return service health status.",
         "operationId": "health_health_check_get",
         "responses": {
           "200": {
@@ -3614,40 +2639,6 @@
         },
         "tags": [
           "Health"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       }
     },
@@ -3803,67 +2794,6 @@
         ]
       }
     },
-    "/v1/machines/claim": {
-      "post": {
-        "summary": "Claim a pool machine for active usage within an environment.",
-        "description": "\n        Claim a pool machine for active usage within an environment.\n\n        This grabs a pre-created machine from the pool, assigns it to the\n        organization, and associates it with an environment.\n\n        Request body:\n        {\n            \"zone\": \"na-us-local-local-s\",  # optional, defaults to first available\n            \"name\": \"sandbox\",  # optional, default \"sandbox\"\n            \"environment\": \"personal\",  # required, environment slug\n            \"autoenv\": false,  # optional, auto-create environment if missing\n        }\n\n        Returns machine info.\n        ",
-        "operationId": "machines_claim_machine_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Machines"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/machines/": {
       "post": {
         "summary": "Create a new machine by purchasing a contract.",
@@ -3936,13 +2866,30 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "type": "string"
-                    },
                     "object": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/machines"
                     }
-                  }
+                  },
+                  "required": [
+                    "object",
+                    "data",
+                    "has_more",
+                    "url"
+                  ]
                 }
               }
             }
@@ -4054,6 +3001,17 @@
         },
         "tags": [
           "Machines"
+        ],
+        "parameters": [
+          {
+            "name": "machine_id",
+            "in": "path",
+            "description": "Path parameter: machine_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ]
       },
       "get": {
@@ -4105,38 +3063,231 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "machine_id",
+            "in": "path",
+            "description": "Path parameter: machine_id",
+            "required": true,
             "schema": {
               "type": "string"
             }
           }
         ]
+      }
+    },
+    "/v1/machines/{machine_id}/extend": {
+      "post": {
+        "summary": "Extend an active machine contract by duration minutes.",
+        "description": "Extend an active machine contract by duration minutes.",
+        "operationId": "machines_extend_machine_post",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Machines"
+        ],
+        "parameters": [
+          {
+            "name": "machine_id",
+            "in": "path",
+            "description": "Path parameter: machine_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/machines/{machine_id}/restore": {
+      "post": {
+        "summary": "Restore a machine from a stored snapshot.",
+        "description": "Restore a machine from a stored snapshot.",
+        "operationId": "machines_restore_machine_post",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Machines"
+        ],
+        "parameters": [
+          {
+            "name": "machine_id",
+            "in": "path",
+            "description": "Path parameter: machine_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/machines/{machine_id}/snapshot": {
+      "post": {
+        "summary": "Create a snapshot for an active machine.",
+        "description": "Create a snapshot for an active machine.",
+        "operationId": "machines_snapshot_machine_post",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Machines"
+        ],
+        "parameters": [
+          {
+            "name": "machine_id",
+            "in": "path",
+            "description": "Path parameter: machine_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
       }
     },
     "/v1/memberships/": {
@@ -4236,25 +3387,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/memberships"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -4395,33 +3540,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -4491,6 +3613,17 @@
         },
         "tags": [
           "Memberships"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -4568,6 +3701,17 @@
         "tags": [
           "Memberships"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -4586,11 +3730,11 @@
         ]
       }
     },
-    "/v1/resources": {
+    "/v1/models": {
       "get": {
-        "summary": "List all available resources.",
-        "description": "List all available resources.",
-        "operationId": "resources_list_get",
+        "summary": "List available models",
+        "description": "Returns the catalog of available AI models across providers.",
+        "operationId": "models_list_get",
         "responses": {
           "200": {
             "description": "Successful response",
@@ -4606,28 +3750,47 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "type": "object"
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "object": {
+                            "type": "string",
+                            "example": "model"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "provider": {
+                            "type": "string"
+                          },
+                          "pricing": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "object",
+                          "type",
+                          "provider"
+                        ]
                       }
-                    },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
                     },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/models"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -4655,7 +3818,7 @@
           }
         },
         "tags": [
-          "Resources"
+          "Models"
         ],
         "parameters": [
           {
@@ -4693,11 +3856,11 @@
         ]
       }
     },
-    "/v1/resources/{id}": {
+    "/v1/models/{id}": {
       "get": {
-        "summary": "Get a specific model by ID.",
-        "description": "Get a specific model by ID.",
-        "operationId": "resources_retrieve_get",
+        "summary": "Retrieve a model",
+        "description": "Returns details for a specific model identifier.",
+        "operationId": "models_retrieve_get",
         "responses": {
           "200": {
             "description": "Successful response",
@@ -4710,9 +3873,26 @@
                       "type": "string"
                     },
                     "object": {
+                      "type": "string",
+                      "example": "model"
+                    },
+                    "type": {
                       "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "pricing": {
+                      "type": "object",
+                      "additionalProperties": true
                     }
-                  }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "type",
+                    "provider"
+                  ]
                 }
               }
             }
@@ -4739,37 +3919,14 @@
           }
         },
         "tags": [
-          "Resources"
+          "Models"
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -4874,25 +4031,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/organizations"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -5031,6 +4182,17 @@
         "tags": [
           "Organizations"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -5096,33 +4258,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -5190,6 +4329,17 @@
         },
         "tags": [
           "Organizations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -5306,25 +4456,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/secrets"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -5463,6 +4607,17 @@
         "tags": [
           "Secrets"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -5525,6 +4680,17 @@
         },
         "tags": [
           "Secrets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -5599,6 +4765,17 @@
         },
         "tags": [
           "Secrets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -5676,33 +4853,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -5775,33 +4929,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -5827,13 +4958,30 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "type": "string"
-                    },
                     "object": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/statements"
                     }
-                  }
+                  },
+                  "required": [
+                    "object",
+                    "data",
+                    "has_more",
+                    "url"
+                  ]
                 }
               }
             }
@@ -5973,33 +5121,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "statement_id",
+            "in": "path",
+            "description": "Path parameter: statement_id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -6090,8 +5215,8 @@
     },
     "/v1/subscriptions/": {
       "post": {
-        "summary": "Post create",
-        "description": "Operation provided by SubscriptionsAPI",
+        "summary": "Create a hosted checkout intent for a subscription tier.",
+        "description": "Create a hosted checkout intent for a subscription tier.",
         "operationId": "subscriptions_create_post",
         "responses": {
           "200": {
@@ -6164,8 +5289,8 @@
         ]
       },
       "get": {
-        "summary": "Get list",
-        "description": "Operation provided by SubscriptionsAPI",
+        "summary": "List active subscriptions for the authenticated organization.",
+        "description": "List active subscriptions for the authenticated organization.",
         "operationId": "subscriptions_list_get",
         "responses": {
           "200": {
@@ -6185,25 +5310,19 @@
                         "type": "object"
                       }
                     },
-                    "page": {
-                      "type": "integer"
-                    },
-                    "page_size": {
-                      "type": "integer"
-                    },
-                    "count": {
-                      "type": "integer"
-                    },
-                    "num_pages": {
-                      "type": "integer"
-                    },
                     "has_more": {
                       "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/subscriptions"
                     }
                   },
                   "required": [
                     "object",
-                    "data"
+                    "data",
+                    "has_more",
+                    "url"
                   ]
                 }
               }
@@ -6341,40 +5460,6 @@
         },
         "tags": [
           "Subscriptions"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "security": [
           {
@@ -6535,8 +5620,8 @@
     },
     "/v1/subscriptions/pay-as-you-go": {
       "post": {
-        "summary": "Post pay_as_you_go",
-        "description": "Operation provided by SubscriptionsAPI",
+        "summary": "Create or reuse a pay-as-you-go subscription and return limits.",
+        "description": "Create or reuse a pay-as-you-go subscription and return limits.",
         "operationId": "subscriptions_pay_as_you_go_post",
         "responses": {
           "200": {
@@ -6763,8 +5848,8 @@
     },
     "/v1/subscriptions/{subscription_id}": {
       "get": {
-        "summary": "Get retrieve",
-        "description": "Operation provided by SubscriptionsAPI",
+        "summary": "Retrieve a subscription by ID.",
+        "description": "Retrieve a subscription by ID.",
         "operationId": "subscriptions_retrieve_get",
         "responses": {
           "200": {
@@ -6821,6 +5906,173 @@
         ],
         "parameters": [
           {
+            "name": "subscription_id",
+            "in": "path",
+            "description": "Path parameter: subscription_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/snapshots/": {
+      "post": {
+        "summary": "Create a snapshot for a machine.",
+        "description": "Create a snapshot for a machine.",
+        "operationId": "snapshots_create_post",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Snapshots"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "List snapshots for the authenticated organization.",
+        "description": "List snapshots for the authenticated organization.",
+        "operationId": "snapshots_list_get",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "/v1/snapshots"
+                    }
+                  },
+                  "required": [
+                    "object",
+                    "data",
+                    "has_more",
+                    "url"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Snapshots"
+        ],
+        "parameters": [
+          {
             "name": "page",
             "in": "query",
             "description": "Page number",
@@ -6853,6 +6105,245 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/snapshots/{id}": {
+      "get": {
+        "summary": "Retrieve snapshot metadata by ID.",
+        "description": "Retrieve snapshot metadata by ID.",
+        "operationId": "snapshots_retrieve_get",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Snapshots"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/snapshots/{id}/download": {
+      "get": {
+        "summary": "Create a download payload for a snapshot.",
+        "description": "Create a download payload for a snapshot.",
+        "operationId": "snapshots_download_get",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Snapshots"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/snapshots/{id}/restore": {
+      "post": {
+        "summary": "Restore snapshot contents to a target machine.",
+        "description": "Restore snapshot contents to a target machine.",
+        "operationId": "snapshots_restore_post",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Snapshots"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Path parameter: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7088,105 +6579,6 @@
         ]
       }
     },
-    "/v1/username/check": {
-      "get": {
-        "summary": "Check username availability endpoint.",
-        "description": "Check username availability endpoint.",
-        "operationId": "username_check_get",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authentication required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Username"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
     "/v1/videos/generations": {
       "post": {
         "summary": "Create video generation.",
@@ -7323,33 +6715,10 @@
         ],
         "parameters": [
           {
-            "name": "page",
-            "in": "query",
-            "description": "Page number",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            }
-          },
-          {
-            "name": "page_size",
-            "in": "query",
-            "description": "Number of items per page",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10,
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "ordering",
-            "in": "query",
-            "description": "Field to order by",
-            "required": false,
+            "name": "generation_id",
+            "in": "path",
+            "description": "Path parameter: generation_id",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -7360,67 +6729,6 @@
             "bearerAuth": []
           }
         ]
-      }
-    },
-    "/v1/webhooks/stripe": {
-      "post": {
-        "summary": "Stripe webhook endpoint for the billing API.",
-        "description": "Stripe webhook endpoint for the billing API.",
-        "operationId": "webhooks_stripe_webhook_post",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Resource not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Webhooks"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
       }
     }
   },
@@ -7474,10 +6782,6 @@
       "description": "Operations for audio"
     },
     {
-      "name": "Auth",
-      "description": "Operations for auth"
-    },
-    {
       "name": "Chat",
       "description": "Operations for chat"
     },
@@ -7498,10 +6802,6 @@
       "description": "Operations for engrams"
     },
     {
-      "name": "Environments",
-      "description": "Operations for environments"
-    },
-    {
       "name": "Health",
       "description": "Operations for health"
     },
@@ -7518,8 +6818,8 @@
       "description": "Operations for memberships"
     },
     {
-      "name": "Resources",
-      "description": "Operations for resources"
+      "name": "Models",
+      "description": "Operations for models"
     },
     {
       "name": "Organizations",
@@ -7538,6 +6838,10 @@
       "description": "Operations for subscriptions"
     },
     {
+      "name": "Snapshots",
+      "description": "Operations for snapshots"
+    },
+    {
       "name": "Threed",
       "description": "Operations for threed"
     },
@@ -7546,16 +6850,8 @@
       "description": "Operations for tools"
     },
     {
-      "name": "Username",
-      "description": "Operations for username"
-    },
-    {
       "name": "Videos",
       "description": "Operations for videos"
-    },
-    {
-      "name": "Webhooks",
-      "description": "Operations for webhooks"
     }
   ],
   "security": []
